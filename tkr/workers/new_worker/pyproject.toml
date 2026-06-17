@@ -1,0 +1,31 @@
+[project]
+name = "tkr-new-worker-impl"
+version = "0.1.0"
+description = "A Tierkreis worker implementating tasks for Hamiltonian simulation using Guppy."
+readme = "README.md"
+requires-python = ">=3.12"
+authors = [ {name = "Your Name", email = "you@example.com"} ]
+dependencies = [
+    "guppylang==1.0.0a5",
+    "hugr>=0.16.0",
+    "pytket>=2.18.0",
+    "tierkreis",
+    "tkr-new-worker",
+]
+
+[tool.uv.workspace]
+members = [
+    "api",
+]
+
+[tool.uv.sources]
+tkr-new-worker = { workspace = true }
+tierkreis = { git = "https://github.com/Quantinuum/tierkreis", subdirectory = "tierkreis" }
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project.scripts]
+tkr-new-worker = "tkr_new_worker_impl.main:main"
+

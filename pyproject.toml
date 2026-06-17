@@ -1,0 +1,27 @@
+[project]
+name = "Tierkreis tutorial"
+version = "0.1.0"
+description = "Hamiltoninan simulation with Guppy and Tierkreis"
+authors = [ {name = "The Tierkreis dev team"} ]
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "guppylang==1.0.0a5",
+    "ruff>=0.15.17",
+    "tierkreis",
+    "tkr-aer-worker-impl",
+    "tkr-guppy-worker-impl",
+    "tkr-new-worker-impl",
+    "tkr-old-worker-impl",
+    "tkr-pytket-worker-impl",
+    "tkr-reference-worker-impl",
+]
+
+[tool.uv.sources]
+tkr-pytket-worker-impl = { git = "https://github.com/Quantinuum/tierkreis", subdirectory = "tierkreis_workers/pytket_worker" }
+tkr-guppy-worker-impl = { git = "https://github.com/Quantinuum/tierkreis", subdirectory = "tierkreis_workers/guppy_worker" }
+tkr-old-worker-impl = { path = "tkr/workers/old_worker", editable = true }
+tkr-reference-worker-impl = { path = "tkr/workers/reference_worker", editable = true }
+tkr-new-worker-impl = { path = "tkr/workers/new_worker", editable = true }
+tierkreis = { git = "https://github.com/Quantinuum/tierkreis", subdirectory = "tierkreis" }
+tkr-aer-worker-impl = { git = "https://github.com/Quantinuum/tierkreis", subdirectory = "tierkreis_workers/aer_worker" }

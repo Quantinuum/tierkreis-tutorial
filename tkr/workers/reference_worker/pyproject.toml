@@ -1,0 +1,31 @@
+[project]
+name = "tkr-reference-worker-impl"
+version = "0.1.0"
+description = "A reference implementation for Hamiltonian simulatino using Guppy."
+readme = "README.md"
+requires-python = ">=3.12"
+authors = [ {name = "The Tierkreis dev team"} ]
+dependencies = [
+    "guppylang==1.0.0a5",
+    "hugr>=0.16.0",
+    "pytket>=2.18.0",
+    "tierkreis",
+    "tkr-reference-worker",
+]
+
+[tool.uv.workspace]
+members = [
+    "api",
+]
+
+[tool.uv.sources]
+tkr-reference-worker = { workspace = true }
+tierkreis = { git = "https://github.com/Quantinuum/tierkreis", subdirectory = "tierkreis" }
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project.scripts]
+tkr-reference-worker = "tkr_reference_worker_impl.main:main"
+

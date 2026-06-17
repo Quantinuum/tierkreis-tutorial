@@ -1,0 +1,28 @@
+[project]
+name = "tkr-old-worker-impl"
+version = "0.1.0"
+description = "A old Tierkreis worker implementating tasks for Hamiltonian simulation using pytket"
+readme = "README.md"
+requires-python = ">=3.12"
+authors = [ {name = "Your Name", email = "you@example.com"} ]
+dependencies = [
+    "tierkreis",
+    "tkr-old-worker",
+]
+
+[tool.uv.workspace]
+members = [
+    "api",
+]
+
+[tool.uv.sources]
+tkr-old-worker = { workspace = true }
+tierkreis = { git = "https://github.com/Quantinuum/tierkreis", subdirectory = "tierkreis" }
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project.scripts]
+tkr-old-worker = "tkr_old_worker_impl.main:main"
+
