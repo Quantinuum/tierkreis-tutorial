@@ -1,3 +1,4 @@
+@portmapping
 model Ansatz {
     a: float;
     b: float;

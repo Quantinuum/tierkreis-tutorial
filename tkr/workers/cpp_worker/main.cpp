@@ -64,10 +64,9 @@ void write_output(const json &call_args, const Ansatz &output)
 {
 
   json outputs = call_args["outputs"];
+  std::cout << outputs << std::endl;
   for (auto &[key, path] : outputs.items())
   {
-    if (key != "value")
-      continue; // we only want to write value
     std::cout << "writing output: " << key << " at: " << path << std::endl;
     auto out_path = CHECKPOINTS_DIRECTORY + path.template get<std::string>();
     std::ofstream output_file(out_path);
@@ -76,15 +75,19 @@ void write_output(const json &call_args, const Ansatz &output)
       std::cerr << "Error: Could not open output file for writing: " << out_path << std::endl;
       return;
     }
-    json data = {
-        {"a", output.a},
-        {"b", output.b},
-        {"c", output.c}
-    };
+    json data;
+    if (key == "a")
+      data = output.a;
+    else if (key == "b")
+      data = output.b;
+    else if (key == "c")
+      data = output.c;
+    else 
+      data = {{}};
     output_file << data << std::endl;
     output_file.close();
   }
-
+  std::cout << "writing done file" << std::endl;
   auto done_file_path = CHECKPOINTS_DIRECTORY + call_args["done_path"].template get<std::string>();
   std::ofstream done_file(done_file_path);
   if (done_file.is_open())
@@ -111,7 +114,8 @@ int main(int argc, char **argv)
 
     // parse worker_call_args
     std::cout << "parsing json" << std::endl;
-    parse_json(argv[1], call_args);
+    std::string call_args_path = CHECKPOINTS_DIRECTORY + argv[1];
+    parse_json(call_args_path, call_args);
     std::cout << "parsing inputs" << std::endl;
     parse_input(call_args, input_data);
   
