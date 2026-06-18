@@ -124,7 +124,9 @@ def inputs() -> dict[str, Any]:
 
 def main() -> None:
     graph = hamiltonian_sim()
-    storage = FileStorage(workflow_id=UUID(int=12345), name="your_workflow")
+    storage = FileStorage(
+        workflow_id=UUID(int=12346), name="guppy_hamiltonian_simulation"
+    )
     executor = ShellExecutor(None, storage.workflow_dir)
     storage.clean_graph_files()
     run_graph(storage, executor, graph, inputs())

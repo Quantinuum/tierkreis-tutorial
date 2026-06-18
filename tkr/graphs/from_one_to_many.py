@@ -198,7 +198,7 @@ def inputs() -> dict[str, Any]:
 
 def main() -> None:
     graph = multiple_hamiltonian_sim()
-    storage = FileStorage(workflow_id=UUID(int=12345), name="your_workflow")
+    storage = FileStorage(workflow_id=UUID(int=12348), name="hamiltonian_simulation")
     executor = ShellExecutor(None, storage.workflow_dir)
     storage.clean_graph_files()
     run_graph(storage, executor, graph, inputs())
