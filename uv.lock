@@ -6,6 +6,9 @@ resolution-markers = [
     "platform_machine != 'x86_64' or sys_platform != 'darwin'",
 ]
 
+[options]
+prerelease-mode = "allow"
+
 [[package]]
 name = "annotated-types"
 version = "0.7.0"
@@ -1840,7 +1843,7 @@ dependencies = [
 ]
 
 [package.metadata]
-requires-dist = [{ name = "tierkreis" }]
+requires-dist = [{ name = "tierkreis", git = "https://github.com/Quantinuum/tierkreis?subdirectory=tierkreis" }]
 
 [[package]]
 name = "tkr-guppy-worker"
