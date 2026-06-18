@@ -1,5 +1,5 @@
 import logging
-from typing import Any, Literal, NamedTuple
+from typing import Any, NamedTuple
 from uuid import UUID
 
 from guppy_worker import emulate, to_backend_result
@@ -17,7 +17,7 @@ from tierkreis.controller import run_graph
 from tierkreis.controller.storage.debug_graph import debug_graph
 from tierkreis.executor import ShellExecutor
 from tierkreis.graphs.fold import FoldFunctionInput, FoldGraphInputs, fold_graph
-from tierkreis.models import TKR, Workflow
+from tierkreis.models import TKR, OpaqueType, Workflow
 from tierkreis.storage import FileStorage, read_outputs
 
 
@@ -37,8 +37,8 @@ def ansatz(qbts: array[qubit, 4], a: float, b: float, c: float) -> None:  # type
 
 
 class SubmitInputs(NamedTuple):
-    circuit: TKR[Literal["hugr.package.Package"]]
-    pauli_string: TKR[Literal["pytket._tket.pauli.QubitPauliString"]]
+    circuit: TKR[OpaqueType["hugr.package.Package"]]
+    pauli_string: TKR[OpaqueType["pytket._tket.pauli.QubitPauliString"]]
     n_shots: TKR[int]
 
 
@@ -76,8 +76,8 @@ class SymbolicExecutionInputs(NamedTuple):
     a: TKR[float]
     b: TKR[float]
     c: TKR[float]
-    ham: TKR[list[tuple[Literal["pytket._tket.pauli.QubitPauliString"], float]]]
-    ansatz: TKR[Literal["hugr.package.Package"]]
+    ham: TKR[list[tuple[OpaqueType["pytket._tket.pauli.QubitPauliString"], float]]]
+    ansatz: TKR[OpaqueType["hugr.package.Package"]]
 
 
 def hamiltonian_sim() -> Workflow[SymbolicExecutionInputs, TKR[float]]:
