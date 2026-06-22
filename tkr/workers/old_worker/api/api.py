@@ -20,7 +20,7 @@ class substitute(NamedTuple):
         return "old_worker"
 
 
-class append_pauli_measurement(NamedTuple):
+class append_pauli_measurements(NamedTuple):
     circuit: TKR[OpaqueType["pytket._tket.circuit.Circuit"]]
     pauli_string: TKR[OpaqueType["pytket._tket.pauli.QubitPauliString"]]
 

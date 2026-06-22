@@ -3,7 +3,7 @@ from typing import Any, NamedTuple
 from uuid import UUID
 
 from aer_worker import submit_single
-from old_worker import append_pauli_measurement, optimise_ansatz, substitute
+from old_worker import append_pauli_measurements, optimise_ansatz, substitute
 from pytket import Qubit
 from pytket.circuit import Circuit, fresh_symbol
 from pytket.pauli import Pauli, QubitPauliString
@@ -54,7 +54,7 @@ def exp_val():
     pauli_string = g.inputs.pauli_string
     n_shots = g.inputs.n_shots
 
-    measurement_circuit = g.task(append_pauli_measurement(circuit, pauli_string))
+    measurement_circuit = g.task(append_pauli_measurements(circuit, pauli_string))
 
     compiled_circuit = g.task(optimise_ansatz(measurement_circuit))
 

@@ -18,7 +18,7 @@ def substitute(circuit: Circuit, a: float, b: float, c: float) -> Circuit:
 
 
 @worker.task()
-def append_pauli_measurement(
+def append_pauli_measurements(
     circuit: Circuit,
     pauli_string: QubitPauliString,
 ) -> Circuit:
