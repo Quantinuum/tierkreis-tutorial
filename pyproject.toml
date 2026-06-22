@@ -17,6 +17,7 @@ dependencies = [
     "tkr-reference-worker-impl",
     "tkr-cpp-worker",
     "tierkreis-visualization>=0.1.9",
+    "jupyter>=1.1.1",
 ]
 
 [tool.uv.sources]
