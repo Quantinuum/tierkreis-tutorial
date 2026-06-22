@@ -7,7 +7,7 @@ from guppylang import guppy
 from guppylang.std.angles import angle
 from guppylang.std.builtins import array
 from guppylang.std.quantum import cx, qubit, rz
-from new_worker import append_pauli_measurements, optimise_ansatz, substitute
+from reference_worker import append_pauli_measurements, optimise_ansatz, substitute
 from pytket import Qubit
 from pytket.pauli import Pauli, QubitPauliString
 from pytket_worker import expectation
