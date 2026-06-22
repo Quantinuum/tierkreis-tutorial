@@ -5,6 +5,6 @@ model Ansatz {
     c: float;
 
 }
-interface TestNamespace {
+interface cpp_worker {
   gen_inputs(value: string): Ansatz;
 }
