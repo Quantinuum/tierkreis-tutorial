@@ -16,6 +16,7 @@ dependencies = [
     "tkr-pytket-worker-impl",
     "tkr-reference-worker-impl",
     "tkr-cpp-worker",
+    "tierkreis-visualization>=0.1.9",
 ]
 
 [tool.uv.sources]
