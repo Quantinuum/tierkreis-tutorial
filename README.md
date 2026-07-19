@@ -25,7 +25,7 @@ It updates an existing workflow to use the new [guppy](https://guppylang.org) la
     ```
 3. Make sure the C++ worker binary is in your path:
     ```bash
-    export PATH=$PATH:$PWD/workers/cpp_worker
+    export PATH=$PATH:$PWD/tkr/workers/cpp_worker
     ```
 
 ## Project Structure
